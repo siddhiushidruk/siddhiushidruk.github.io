@@ -45,7 +45,7 @@ CyberSUS is my personal portfolio, its after my name **SiddhiUmeshShidruk**, and
 ```
 
 ## Credits
-The initial version was built with AI assistance. I customise, maintain and extend it myself.
+The initial version was built with AI assistance. I customise, maintain and extended it myself.
 
 ## License
 **© 2026 Siddhi Umesh Shidruk. All rights reserved.**
