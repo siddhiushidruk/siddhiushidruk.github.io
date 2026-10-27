@@ -27,7 +27,7 @@ CyberSUS is my personal portfolio, its after my name **SiddhiUmeshShidruk**, and
 - **Canvas API** for the animated brick wall and scan beam in the hero.
 - **CSS Grid and Flexbox** for a responsive layout that works from phone to desktop.
 - **Google Fonts:** Bricolage Grotesque, IBM Plex Sans and JetBrains Mono.
-- **Netlify** for hosting, deployed automatically from this private repository.
+- **Github** for hosting, deployed automatically from this private repository.
   
 ## Security and privacy
 - The site is fully static, with no backend, database, cookies or tracking.
