@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- © 2026 Siddhi Umesh Shidruk. All rights reserved. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -132,41 +133,32 @@ section.block{padding-block:96px; border-bottom:1px solid var(--line)}
 .spot:hover::after{opacity:1}
 .spot:hover{border-color:var(--line2)}
 
-<!-- ABOUT -->
-<section class="block" id="about">
-  <div class="wrap">
-    <div class="sec-head">
-      <div><div class="eyebrow"><span class="brick"></span> About</div><h2>Hello, I'm Siddhi.</h2></div>
-      <p>The short version: I'm the person who keeps pulling the thread until the problem actually makes sense.</p>
-    </div>
-    <div class="about-grid">
-      <div>
-        <div class="about-text">
-          <p>I got into security because I like knowing how things really work, and what happens when they break. That curiosity has taken me from Pune to Maryland and back, from scanner consoles to memory dumps to capture-the-flag leaderboards.</p>
-          <p>Investigation is where I'm happiest. Forensics fascinates me because the evidence doesn't lie: a memory dump, a stray log line, a query nobody else thought to run. I go looking in the places people skip, uncover the weaknesses hiding there from an attacker's point of view, and then work out how to <em>defend against them</em>.</p>
-          <p>I'm comfortable asking the awkward question in a meeting, and just as comfortable digging through logs until the timeline finally lines up. I explain risk in plain language, I see problems through to the end, and I <em>never stop learning</em>.</p>
-        </div>
-        <div class="eyebrow" style="margin-top:32px">Why hire me</div>
-        <div class="focus why">
-          <div class="card spot"><div class="wn">Top 3%</div><h3>I learn by doing</h3><p>TryHackMe worldwide, and 19th nationally in the WiCyS × Amazon × HackerOne CTF.</p></div>
-          <div class="card spot"><div class="wn">10</div><h3>I keep leveling up</h3><p>Certifications earned, with eJPT and CCNA in progress. Nobody has to ask me to keep learning.</p></div>
-          <div class="card spot"><div class="wn">2</div><h3>Countries I've worked in</h3><p>India and the US. New teams, time zones and ways of working don't slow me down.</p></div>
-          <div class="card spot"><div class="wn">360°</div><h3>I see every side</h3><p>I've defended, attacked and investigated, so I think like an attacker when I build defenses.</p></div>
-        </div>
-      </div>
-      <aside class="card now">
-        <h3>Right now</h3>
-        <ul id="nowList">
-          <li><div><b>eJPT</b><small>Junior penetration tester</small></div><span class="count study">studying</span></li>
-          <li><div><b>CCNA</b><small>Cisco networking</small></div><span class="count study">studying</span></li>
-          <li><div><b>AWS Cloud Practitioner</b><small>Passed Oct 2026</small></div><span class="count">passed</span></li>
-          <li><div><b>AWS AI Practitioner</b><small>Passed Oct 2026</small></div><span class="count">passed</span></li>
-          <li><div><b>Job search</b><small>Anywhere in India or remote</small></div><span class="count" style="background:color-mix(in srgb, var(--low) 16%, transparent); color:var(--low)">open</span></li>
-        </ul>
-      </aside>
-    </div>
-  </div>
-</section>
+/* about */
+.about-grid{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); gap:28px}
+@media (max-width:900px){ .about-grid{grid-template-columns:minmax(0,1fr)} }
+.focus{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:28px}
+@media (max-width:1000px){ .focus{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:560px){ .focus{grid-template-columns:minmax(0,1fr)} }
+.focus .card{padding:20px}
+.focus.why{grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:14px}
+@media (max-width:560px){ .focus.why{grid-template-columns:minmax(0,1fr)} }
+.why .wn{font-family:var(--f-display); font-weight:800; font-size:40px; line-height:1; color:var(--accent); letter-spacing:-.02em}
+.why h3{margin-top:12px}
+.focus h3{font-size:18px; margin:14px 0 6px}
+.focus p{font-size:14px; color:var(--muted)}
+.ficon{width:38px; height:38px; border-radius:9px; display:grid; place-items:center; background:var(--accent-soft); color:var(--accent)}
+.ficon svg{width:20px; height:20px}
+.about-text{font-size:19px; line-height:1.65; max-width:60ch}
+.about-text p+p{margin-top:16px}
+.about-text em{font-style:normal; color:var(--accent)}
+.now{padding:22px; align-self:start}
+.now h3{font-size:15px; font-family:var(--f-mono); font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.now ul{list-style:none; margin:16px 0 0; padding:0; display:grid; gap:12px}
+.now li{display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; padding:12px 14px; border-radius:8px; background:var(--bg2); border:1px solid var(--line)}
+.now li b{display:block; font-weight:600; font-size:15px}
+.now li small{color:var(--muted); font-size:13px}
+.count{font:600 13px var(--f-mono); padding:4px 9px; border-radius:6px; background:var(--accent-soft); color:var(--accent); white-space:nowrap}
+.count.study{background:color-mix(in srgb, var(--info) 15%, transparent); color:var(--info)}
 
 /* experience */
 .timeline{position:relative; display:grid; gap:24px; padding-left:34px}
@@ -336,8 +328,8 @@ details.more ul{margin:12px 0 0; padding-left:18px; color:var(--muted); font-siz
 .c-item a.b:hover{color:var(--accent)}
 .copy{height:34px; padding:0 12px; border-radius:7px; border:1px solid var(--line); background:var(--bg2); color:var(--fg); font:600 12px var(--f-mono); cursor:pointer}
 .copy:hover{border-color:var(--accent); color:var(--accent)}
-@media (max-width:560px){ .toast{position:fixed; left:50%; bottom:calc(24px + env(safe-area-inset-bottom,0px)); transform:translate(-50%, 140%); padding:11px 18px; border-radius:9px; background:var(--fg); color:var(--bg); font:600 14px var(--f-body); box-shadow:var(--shadow); transition:transform .35s cubic-bezier(.2,.8,.2,1); z-index:80}
-.toast.show{transform:translate(-50%,0)}
+.toast{position:fixed; left:50%; bottom:calc(24px + env(safe-area-inset-bottom,0px)); transform:translate(-50%, calc(100% + 40px)); visibility:hidden; padding:11px 18px; border-radius:9px; background:var(--fg); color:var(--bg); font:600 14px var(--f-body); box-shadow:var(--shadow); transition:transform .35s cubic-bezier(.2,.8,.2,1); z-index:80}
+.toast.show{transform:translate(-50%,0); visibility:visible}
 
 footer{padding-block:40px}
 footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; font-size:14px; color:var(--muted)}
@@ -383,7 +375,7 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; align-
       <span class="status"><span class="pulse"></span> Open to work · Anywhere in India or remote</span>
       <h1>Siddhi Umesh<span class="last">Shidruk</span></h1>
       <div class="typer" aria-live="off"><span id="typed">Vulnerability Management Engineer</span><span class="caret"></span></div>
-      <p class="lede">I find, prioritise and close security gaps before they turn into incidents. <strong>2+ years</strong> running end-to-end vulnerability management across <strong>5,000+ assets</strong> on-prem, in AWS and in Azure, with SOC investigation and GRC work alongside it.</p>
+      <p class="lede">I find, test, investigate and close security gaps across the full lifecycle: <strong>vulnerability management, detection and response, forensics and offensive testing</strong>. 2+ years of hands-on work across 5,000+ assets on-prem, in AWS and in Azure.</p>
       <div class="cta">
         <a class="btn primary" href="#experience">See my work
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -432,19 +424,22 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; align-
 <section class="block" id="about">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="eyebrow"><span class="brick"></span> About</div><h2>Risk, measured and closed.</h2></div>
-      <p>Security analyst trained at the University of Maryland, now based in Pune and looking for my next vulnerability management or SOC team.</p>
+      <div><div class="eyebrow"><span class="brick"></span> About</div><h2>Hello, I'm Siddhi.</h2></div>
+      <p>The short version: I'm the person who keeps pulling the thread until the problem actually makes sense.</p>
     </div>
     <div class="about-grid">
       <div>
         <div class="about-text">
-          <p>Most of my work sits between the scanner and the fix. I run Qualys VMDR and Nessus at scale, sort real risk from noise, route each finding to the team that owns it, and keep chasing until it's closed <em>inside SLA</em>.</p>
-          <p>At ANGARAI I did this on-site in Maryland for public-sector clients, including the Comptroller of Maryland's FMIS modernization, where I audited every Maryland state agency. Around that I investigated SIEM alerts in Splunk, wrote compliance evidence for ISO 27001 and CIS Controls, and automated the repetitive parts with n8n and Python.</p>
+          <p>I got into security because I like knowing how things really work, and what happens when they break. That curiosity has taken me from Pune to Maryland and back, from scanner consoles to memory dumps to capture-the-flag leaderboards.</p>
+          <p>Investigation is where I'm happiest. Forensics fascinates me because the evidence doesn't lie: a memory dump, a stray log line, a query nobody else thought to run. I go looking in the places people skip, uncover the weaknesses hiding there from an attacker's point of view, and then work out how to <em>defend against them</em>.</p>
+          <p>I'm comfortable asking the awkward question in a meeting, and just as comfortable digging through logs until the timeline finally lines up. I explain risk in plain language, I see problems through to the end, and I <em>never stop learning</em>.</p>
         </div>
-        <div class="focus">
-          <div class="card spot"><div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><h3>Vulnerability Management</h3><p>Scanning, risk-based prioritisation, exceptions, rescans and SLA tracking.</p></div>
-          <div class="card spot"><div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div><h3>Detection &amp; Response</h3><p>L2/L3 alert triage with IOCs, MITRE ATT&amp;CK and the Pyramid of Pain.</p></div>
-          <div class="card spot"><div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Governance &amp; Compliance</h3><p>NIST, ISO 27001, ISO 42001, CIS Controls, audits and risk assessments.</p></div>
+        <div class="eyebrow" style="margin-top:32px">Why hire me</div>
+        <div class="focus why">
+          <div class="card spot"><div class="wn">Top 3%</div><h3>I learn by doing</h3><p>TryHackMe worldwide, and 19th nationally in the WiCyS × Amazon × HackerOne CTF.</p></div>
+          <div class="card spot"><div class="wn">10</div><h3>I keep leveling up</h3><p>Certifications earned, with eJPT and CCNA in progress. Nobody has to ask me to keep learning.</p></div>
+          <div class="card spot"><div class="wn">2</div><h3>Countries I've worked in</h3><p>India and the US. New teams, time zones and ways of working don't slow me down.</p></div>
+          <div class="card spot"><div class="wn">360°</div><h3>I see every side</h3><p>I've defended, attacked and investigated, so I think like an attacker when I build defenses.</p></div>
         </div>
       </div>
       <aside class="card now">
@@ -717,7 +712,7 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; align-
   </div>
 </section>
 
-<!-- EDUCATIONS -->
+<!-- EDUCATION -->
 <section class="block" id="education">
   <div class="wrap">
     <div class="sec-head">
@@ -744,7 +739,7 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; align-
 <section class="block" id="contact">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="eyebrow"><span class="brick"></span> Contact</div><h2>Let's talk about joining ~~your~~ our team.</h2></div>
+      <div><div class="eyebrow"><span class="brick"></span> Contact</div><h2>Let's talk about joining <s>your</s> our team.</h2></div>
       <p>Open to roles Anywhere in India or Remote. Reach me directly by Email, Phone or LinkedIn.</p>
     </div>
     <div class="contact">
@@ -926,7 +921,7 @@ const C={
   clear         clear the screen
 <span class="dim">Tip: Tab completes, ↑ ↓ browse history.</span>`,
   whoami:()=>`<span class="ok">Siddhi Umesh Shidruk</span>
-Vulnerability Management Engineer · SOC · GRC
+Vulnerability management · Detection &amp; response · Forensics · Offensive security · GRC
 2+ years · 5,000+ assets · on-prem, AWS, Azure
 Based in Pune. Open to roles anywhere in India or remote:
 Cybersecurity Analyst · Security Engineer · DFIR · Incident Response · GRC · Consultant`,
