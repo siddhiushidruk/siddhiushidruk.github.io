@@ -164,6 +164,19 @@ section.block{padding-block:56px; border-bottom:1px solid var(--line)}
 .portrait figcaption b::before{content:""; display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--low); margin-right:6px; vertical-align:1px; animation:dot 1.6s ease-in-out infinite}
 @keyframes dot{50%{opacity:.25}}
 
+
+/* tagline brick reveal */
+.sec-head > div{flex:1 1 320px; min-width:0}
+.sec-head > p{position:relative; flex:0 1 500px; max-width:500px; color:var(--fg); font-size:clamp(14.5px,1.15vw,16px); line-height:1.5; padding:9px 18px; border-left:3px solid var(--accent); background:var(--accent-soft); border-radius:0 6px 6px 0}
+.tagline em{font-style:normal; color:var(--accent); font-weight:600}
+.tl-text{display:block; transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1), filter .7s ease}
+.tagline.armed .tl-text{opacity:0; transform:translateY(12px); filter:blur(4px)}
+.tagline.go .tl-text{opacity:1; transform:none; filter:none; transition-delay:.35s}
+.bricks{position:absolute; inset:0; pointer-events:none; z-index:5}
+.bk{position:absolute; border-radius:3px; background:var(--bc); box-shadow:inset 0 -3px 0 rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.14)}
+.bk::before,.bk::after{content:""; position:absolute; top:-4px; width:22%; height:4px; border-radius:3px 3px 0 0; background:var(--bc); filter:brightness(1.12)}
+.bk::before{left:14%} .bk::after{right:14%}
+
 /* about portrait */
 .portrait{margin:0; align-self:start; padding:12px; position:relative}
 .portrait img{display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; border-radius:8px}
@@ -469,7 +482,7 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; align-
   <div class="wrap">
     <div class="sec-head">
       <div><div class="eyebrow"><span class="brick"></span> About</div><h2>Hello, I'm Siddhi.</h2></div>
-      <p>The short version: I'm the person who keeps pulling the thread until the problem actually makes sense.</p>
+      <p><span class="tl-text">The short version: I'm the person who <em>keeps pulling the thread</em> until the problem actually makes sense.</span></p>
     </div>
     <div class="about-grid">
       <div>
@@ -579,7 +592,7 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; align-
   <div class="wrap">
     <div class="sec-head">
       <div><div class="eyebrow"><span class="brick"></span> Projects</div><h2>Built, broken, documented.</h2></div>
-      <p>Hands-on projects from my engineering and graduate studies, across GRC, cloud, forensics, offense and defense Open any card for details.</p>
+      <p>Hands-on projects from my engineering and graduate studies, across GRC, cloud, forensics, offense and defense. Open any card for details.</p>
     </div>
     <div class="proj-grid">
       <article class="card proj spot tilt wide">
@@ -1161,13 +1174,13 @@ $$('.filter').forEach(b=>b.addEventListener('click',()=>{
 (function(){
   const box=$('#alerts'); if(!box||reduce) return;
   const A=[
-    ['CVE-2024-3400 · critical','var(--crit)','56%','14%'],
+    ['CVE-2024-3400 · critical','var(--crit)','44%','15%'],
     ['memory.dmp parsed · 2 IOCs','var(--low)','3%','88%'],
     ['T1059 PowerShell detected','var(--high)','40%','2.5%'],
     ['Nmap: 3 open ports','var(--info)','4%','2.5%'],
-    ['Patch verified · ticket closed','var(--low)','54%','54%'],
+    ['Patch verified · ticket closed','var(--low)','40%','56%'],
     ['Phishing URL blocked','var(--med)','3%','88%'],
-    ['Lateral movement? hunting…','var(--high)','56%','14%'],
+    ['Lateral movement? hunting…','var(--high)','44%','15%'],
     ['Timeline rebuilt · 14:32 UTC','var(--accent)','40%','2.5%']];
   let k=0;
   function next(){
@@ -1178,6 +1191,49 @@ $$('.filter').forEach(b=>b.addEventListener('click',()=>{
     setTimeout(()=>{ el.classList.remove('on'); setTimeout(()=>el.remove(),400); },2600);
   }
   next(); setInterval(next,1900);
+})();
+
+
+/* ---------- section taglines: bricks break, sentence appears ---------- */
+(function(){
+  const cols=['#9D8AC4','#7E6BA8','#B5A5D6','#6A5A92','#3A3644','#8B79B8'];
+  $$('.sec-head > p').forEach(tg=>{
+    tg.classList.add('tagline');
+    if(!tg.querySelector('.tl-text')){ const sp=document.createElement('span'); sp.className='tl-text'; while(tg.firstChild) sp.appendChild(tg.firstChild); tg.appendChild(sp); }
+    if(reduce||!('IntersectionObserver' in window)) return;
+    const wall=document.createElement('div'); wall.className='bricks'; tg.appendChild(wall);
+    let broken=false;
+    function build(){
+      wall.innerHTML='';
+      const W=tg.clientWidth, H=tg.clientHeight, bh=Math.max(14,Math.round(H/Math.max(2,Math.round(H/20)))), rows=Math.ceil(H/bh), bw=Math.round(bh*2.4);
+      for(let r=0;r<rows;r++){
+        for(let x=(r%2? -bw/2:0); x<W; x+=bw){
+          const l=Math.max(0,x), w=Math.min(W,x+bw)-l-2; if(w<6) continue;
+          const b=document.createElement('span'); b.className='bk';
+          b.style.cssText=`left:${l}px;top:${r*bh}px;width:${w}px;height:${bh-2}px;--bc:${cols[(Math.random()*cols.length)|0]}`;
+          wall.appendChild(b);
+        }
+      }
+    }
+    function smash(){
+      if(broken) return; broken=true;
+      [...wall.children].forEach(b=>{
+        const dx=(Math.random()-.5)*160, dy=110+Math.random()*150, rot=(Math.random()-.5)*260;
+        b.animate([
+          {transform:'none',opacity:1},
+          {transform:`translate(${(Math.random()-.5)*4}px,-2px)`,opacity:1,offset:.12},
+          {transform:`translate(${dx*.3}px,-${8+Math.random()*14}px) rotate(${rot*.2}deg)`,opacity:1,offset:.3},
+          {transform:`translate(${dx}px,${dy}px) rotate(${rot}deg)`,opacity:0}
+        ],{duration:850+Math.random()*400,delay:Math.random()*300,easing:'cubic-bezier(.35,0,.85,.55)',fill:'forwards'});
+      });
+      tg.classList.add('go');
+      setTimeout(()=>wall.remove(),1800);
+    }
+    tg.classList.add('armed'); build();
+    addEventListener('resize',()=>{ if(!broken) build(); });
+    const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ setTimeout(smash,250); io.disconnect(); } }),{threshold:.6});
+    io.observe(tg);
+  });
 })();
 
 /* ---------- hero brick wall + scan beam ---------- */
