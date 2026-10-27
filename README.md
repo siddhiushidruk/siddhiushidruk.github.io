@@ -28,7 +28,7 @@ CyberSUS is my personal portfolio, its after my name **SiddhiUmeshShidruk**, and
 - **CSS Grid and Flexbox** for a responsive layout that works from phone to desktop.
 - **Google Fonts:** Bricolage Grotesque, IBM Plex Sans and JetBrains Mono.
 - **Netlify** for hosting, deployed automatically from this private repository.
-- 
+  
 ## Security and privacy
 - The site is fully static, with no backend, database, cookies or tracking.
 - The password lab runs locally in the visitor's browser, and input is never stored or transmitted.
@@ -36,10 +36,13 @@ CyberSUS is my personal portfolio, its after my name **SiddhiUmeshShidruk**, and
 - The source repository is private. Access is granted on request
 
 ## Project structure
+
+```
 ├── index.html     # The whole site: styles, content and scripts
 ├── screenshot.png # Preview image used in this README
 ├── LICENSE        # All rights reserved
 └── README.md
+```
 
 ## Credits
 The initial version was built with AI assistance. I customise, maintain and extend it myself.
