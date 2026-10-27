@@ -2,7 +2,7 @@
 
 **Cybersecurity portfolio | Vulnerability Management · SOC · DFIR · Incident Response · GRC**
 🔗https://sshidruk0721.github.io/siddhiushidruk.github.io/
-💼 **[LinkedIn]**(https://www.linkedin.com/in/siddhi-umesh-shidruk-8132b6213)
+💼 [LinkedIn](https://www.linkedin.com/in/siddhi-umesh-shidruk-8132b6213)
 📍 Pune, India · Open to roles anywhere in India or remote
 
 ## About
